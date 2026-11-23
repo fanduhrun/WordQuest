@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <rect id="background" width="1024" height="1024" fill="#3157d5"/>
+  <g id="compass">
+    <circle cx="512" cy="512" r="330" fill="#fff"/>
+    <circle cx="512" cy="512" r="265" fill="none" stroke="#b8c5f2" stroke-width="18"/>
+    <path d="M512 258v43M512 723v43M258 512h43M723 512h43" fill="none" stroke="#3157d5" stroke-width="22" stroke-linecap="round"/>
+    <path d="M682 342 555 555 512 512 469 469Z" fill="#e05252"/>
+    <path d="M342 682 469 469 512 512 555 555Z" fill="#3157d5"/>
+    <circle cx="512" cy="512" r="27" fill="#fff"/>
+    <circle cx="512" cy="512" r="13" fill="#3157d5"/>
+  </g>
+</svg>
