@@ -9,17 +9,23 @@
 header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}.top{max-width:1100px;margin:auto;padding:12px 16px}
 .brand{display:flex;justify-content:space-between;gap:12px;align-items:center}.brand h1{font-size:1.35rem;margin:0}.xp{font-weight:750;color:var(--gold)}
 .scopebar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:10px}.scopebar label{font-size:.9rem;color:var(--muted)}
-.scopefilter{display:flex;align-items:center;gap:8px;flex:1 1 240px;min-width:0}.scopefilter.lesson{flex:2 1 360px}.scopefilter label{flex:none;white-space:nowrap}.scopefilter select{flex:1;width:100%;min-width:0}.scopebar>.small{flex-basis:100%}
+.scopefilter{display:flex;align-items:center;gap:8px;flex:1 1 240px;min-width:0}.scopefilter.lesson{flex:2 1 360px}.scopefilter label{flex:none;white-space:nowrap}.scopefilter select{flex:1;width:100%;min-width:0}.scopebar>.small{flex-basis:100%}#lessonFilterStatus:empty{display:none}
 html.native header{padding-top:env(safe-area-inset-top)}html.native .top{padding-left:max(16px,env(safe-area-inset-left));padding-right:max(16px,env(safe-area-inset-right))}html.native main{padding-left:max(16px,env(safe-area-inset-left));padding-right:max(16px,env(safe-area-inset-right));padding-bottom:calc(50px + env(safe-area-inset-bottom))}html.native button,html.native select,html.native input,html.native summary{min-height:44px}html.native button{min-width:44px}#documentDialog pre{white-space:pre-wrap;overflow-wrap:anywhere}
 #sessions{overflow-x:auto}
 button,select,input{font:inherit}select,input{border:1px solid var(--line);border-radius:10px;padding:9px 11px;background:#fff;color:var(--ink)}
+button,select,input,summary,[role="button"],.wordcard{touch-action:manipulation}
+.examFilter{flex:1 1 240px;min-width:0}.levelRefinement{margin-top:6px}.levelRefinement summary{cursor:pointer;color:var(--accent);font-size:.9rem}.levelRefinement .scopefilter{margin-top:8px}
 nav{display:flex;gap:7px;overflow:auto;margin-top:10px}.tab,.btn{border:1px solid var(--line);background:#fff;border-radius:10px;padding:9px 13px;cursor:pointer;white-space:nowrap}
 .tab.active,.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
 main{max-width:1100px;margin:18px auto;padding:0 16px 50px}.panel{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:0 2px 7px rgba(0,0,0,.03)}
-.hidden{display:none!important}.small{font-size:.9rem;color:var(--muted);line-height:1.45}.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}.toolbar input{flex:1;min-width:220px}
+.hidden{display:none!important}.small{font-size:.9rem;color:var(--muted);line-height:1.45}
+.learnHeading{display:flex;align-items:center;justify-content:space-between;gap:8px}.learnHeading h2{margin:0}.studyAbout{position:relative}.studyAbout summary{display:grid;place-items:center;list-style:none;width:44px;min-height:44px;border:1px solid var(--line);border-radius:10px;color:var(--accent);cursor:pointer;font-size:1.25rem}.studyAbout summary::-webkit-details-marker{display:none}.studyAboutBody{position:absolute;z-index:15;right:0;top:calc(100% + 4px);width:min(340px,calc(100vw - 64px));padding:12px 16px;background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:0 4px 16px rgba(0,0,0,.15)}.studyAboutBody p:first-child{margin-top:0}.studyAboutBody p:last-child{margin-bottom:0}
+.studyControls{display:flex;gap:8px;align-items:center;margin-top:8px}.studyControls select{flex:1;min-width:0;text-overflow:ellipsis}.studySearchToggle{display:grid;place-items:center;width:44px;height:44px;padding:0;flex:none}.studySearchToggle.activeSearch{color:var(--accent);border-color:var(--accent);background:var(--soft)}.studySearchRow{display:flex;gap:8px;margin-top:8px}.studySearchRow input{flex:1;min-width:0}.studySearchRow button{min-width:44px}#activeSearch:empty,#lessonInfo:empty{display:none}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:11px}.wordcard{border:1px solid var(--line);border-radius:13px;padding:15px;background:#fff}
 .word{font-size:1.25rem;font-weight:800}.meaning{margin:7px 0 11px}.example{margin-top:8px;font-style:italic;color:#344054}.tag{display:inline-block;background:var(--soft);color:var(--accent);border-radius:999px;padding:3px 7px;font-size:.75rem;margin-top:7px}
 .reader{max-width:720px;margin:20px auto}.readerCard{border:1px solid var(--line);border-radius:18px;padding:30px;min-height:300px;display:flex;flex-direction:column;justify-content:center;background:#fff}.readerWord{font-size:2.4rem;font-weight:850;margin-bottom:14px}
+.swipeCard{touch-action:pan-y pinch-zoom}.swipeHint{display:none}
+.flashCard{overscroll-behavior:contain;-webkit-user-select:none;user-select:none}.flashCard[aria-disabled="false"]{cursor:pointer}.flashCard:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
 .weeklist{display:grid;gap:8px}.weekrow{display:grid;grid-template-columns:160px 1fr 1fr;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
 .controls{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:14px}.status{color:var(--muted);margin:8px 0 12px}
 .setup{max-width:620px;margin:auto}.setup label{display:block;font-weight:700;margin:15px 0 5px}.setup select{width:100%}
@@ -34,6 +40,7 @@ table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:9px;bord
 @media(max-width:700px){.grid{grid-template-columns:1fr}.weekrow{grid-template-columns:1fr}.qtext{font-size:1.15rem}.readerWord{font-size:2rem}.panel{padding:14px}}
 @media(min-width:701px){.compactDetails>summary{display:none}}
 @media(max-width:700px){
+ body{min-height:100vh;min-height:100dvh;display:flex;flex-direction:column}
  header{position:static}.top{padding-top:8px;padding-bottom:8px}
  .compactDetails>summary{cursor:pointer;min-height:44px;display:flex;align-items:center;gap:8px;font-size:.9rem;font-weight:650;color:var(--accent)}
  .compactDetails>summary::before{content:'▸';display:inline-block}.compactDetails[open]>summary::before{content:'▾'}
@@ -42,10 +49,20 @@ table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:9px;bord
  #filterLabel{flex:none}#scopeSelection{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--muted);font-weight:500}
  .scopebar{margin-top:0;padding-bottom:8px}.scopebar>.small{margin-top:0}
  nav{margin-top:4px}.tab{padding:9px 10px}
- main{margin:12px auto}.panel{padding:14px}
- #study h2,#flash h2{margin:0 0 6px;font-size:1.2rem}
+ main{width:100%;flex:1;margin:12px auto;touch-action:pan-y pinch-zoom}.panel{padding:14px}
+ .view.panel{padding:0;border:0;border-radius:0;background:transparent;box-shadow:none}
+ body.readerMode main,html.native body.readerMode main{padding-bottom:0}
+ #study h2,#flash h2{margin:0;font-size:1.2rem}
+ #testSetup h2{margin:0 0 6px;font-size:1.2rem}
+ #testSetup .setupIntro{margin:0 0 10px}
+ #testSetup .setupFields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ #testSetup .setupFields label{font-size:.875rem;margin:0 0 4px}
+ #testSetup .setupFields select{min-width:0;text-overflow:ellipsis}
+ #testSetup .setupHelp{margin-top:8px}
+ #testSetup .setupHelp summary{cursor:pointer;color:var(--accent)}
+ #testSetup .controls{margin-top:8px}#startTestBtn{width:100%}
+ #testSetupStatus:empty{display:none}
  #lessonInfo{margin:4px 0}
- #studyOptions .toolbar{margin:0 0 10px}
  .reader{margin:8px auto}.readerCard{min-height:0;padding:18px}.readerWord{margin-bottom:8px}
  #flashStatus{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
  #flash .readerCard{height:clamp(170px,27vh,240px);overflow-y:auto;justify-content:flex-start}
@@ -56,46 +73,47 @@ table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:9px;bord
  #studyContent .reader>.controls .btn,#flash .reader>.controls .btn{min-width:0;min-height:44px;padding:8px 2px;font-size:clamp(.72rem,3.3vw,.9rem)}
  #studyPrev,#flashPrev{grid-column:1}#studyNext,#flashNext{grid-column:4}
 }
-@media(hover:none) and (pointer:coarse){.keyboardHint{display:none}}
+@media(hover:none) and (pointer:coarse){.keyboardHint{display:none}.swipeHint{display:inline}}
 .modal{position:fixed;inset:0;background:rgba(16,24,40,.48);display:flex;align-items:center;justify-content:center;padding:18px;z-index:50}.modalbox{max-width:680px;width:100%;max-height:88vh;overflow:auto;background:#fff;border-radius:18px;padding:22px;box-shadow:0 18px 60px rgba(0,0,0,.2)}.modalhead{display:flex;justify-content:space-between;gap:12px}.modalclose{border:0;background:transparent;font-size:1.5rem;cursor:pointer}.detailgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.detailbox{border:1px solid var(--line);border-radius:12px;padding:12px;background:#f8fafc}@media(max-width:600px){.detailgrid{grid-template-columns:1fr}}</style>
 </head>
 <body>
 <header><div class="top">
-<div class="brand"><h1>🧭 Word Quest</h1><div style="display:flex;align-items:center;gap:10px"><div class="xp"><span id="starsTop">★ 0</span> &nbsp; <span id="xpTop">0 XP</span></div><button id="gearBtn" title="Settings" aria-label="Settings" style="border:0;background:transparent;font-size:1.15rem;cursor:pointer;opacity:.45">⚙️</button></div></div>
-<details id="scopePanel" class="compactDetails" open><summary id="scopeSummary"><span id="filterLabel">Filters</span><span id="scopeSelection">All exams · All levels · All lessons · All words</span></summary><div class="scopebar"><div class="scopefilter"><label for="globalExam"><b>Exam:</b></label><select id="globalExam"><option value="ALL">All exams</option><option value="SSAT-E">SSAT Elementary (current grades 3–4)</option><option value="SSAT-M">SSAT Middle (current grades 5–7)</option><option value="SSAT-U">SSAT Upper (current grades 8–11)</option><option value="ISEE-L">ISEE Lower (entering grades 5–6)</option><option value="ISEE-M">ISEE Middle (entering grades 7–8)</option><option value="ISEE-U">ISEE Upper (entering grades 9–12)</option><option value="PSAT-89">PSAT 8/9</option><option value="PSAT">PSAT/NMSQT</option><option value="SAT">SAT</option><option value="ACT">ACT</option></select></div><div class="scopefilter"><label for="globalWeek"><b>Level:</b></label><select id="globalWeek"><option value="ALL">All levels</option><option value="SSAT-E">SSAT Elementary (grades 3-4)</option><option value="SSAT-M">SSAT Middle (grades 5-7)</option><option value="SSAT-U">SSAT Upper (grades 8-11)</option><option value="ACADEMIC">Advanced academic</option></select></div><div class="scopefilter lesson"><label for="globalLesson"><b>Lesson:</b></label><select id="globalLesson"><option value="ALL">All lessons</option></select></div><div class="scopefilter"><label for="globalMastery"><b>Mastery:</b></label><select id="globalMastery"><option value="all">All words</option><option value="practice">Needs practice</option><option value="unseen">Not yet tested</option><option value="mastered">Mastered</option></select></div><span class="small">Exam pools are editorial recommendations, not official lists. Filters apply across Learn, Flashcards, and your next Test or Practice session.</span></div></details>
+<div class="brand"><h1>🧭 Word Quest</h1><div style="display:flex;align-items:center;gap:10px"><div class="xp"><span id="starsTop">★ 0</span></div><button id="gearBtn" title="Settings" aria-label="Settings" style="border:0;background:transparent;font-size:1.15rem;cursor:pointer;opacity:.45">⚙️</button></div></div>
+<details id="scopePanel" class="compactDetails" open><summary id="scopeSummary"><span id="filterLabel">Filters</span><span id="scopeSelection">All exams · All lessons · All words</span></summary><div class="scopebar"><div class="examFilter"><div class="scopefilter"><label for="globalExam"><b>Exam:</b></label><select id="globalExam"><option value="ALL">All exams</option><option value="SSAT-E">SSAT Elementary (current grades 3–4)</option><option value="SSAT-M">SSAT Middle (current grades 5–7)</option><option value="SSAT-U">SSAT Upper (current grades 8–11)</option><option value="ISEE-L">ISEE Lower (entering grades 5–6)</option><option value="ISEE-M">ISEE Middle (entering grades 7–8)</option><option value="ISEE-U">ISEE Upper (entering grades 9–12)</option><option value="PSAT-89">PSAT 8/9</option><option value="PSAT">PSAT/NMSQT</option><option value="SAT">SAT</option><option value="ACT">ACT</option></select></div><details class="levelRefinement"><summary id="levelRefinementSummary">Refine by word level (optional)</summary><div class="scopefilter"><label for="globalWeek"><b>Word level:</b></label><select id="globalWeek"><option value="ALL">All levels</option><option value="SSAT-E">SSAT Elementary (grades 3-4)</option><option value="SSAT-M">SSAT Middle (grades 5-7)</option><option value="SSAT-U">SSAT Upper (grades 8-11)</option><option value="ACADEMIC">Advanced academic</option></select></div></details></div><div class="scopefilter lesson"><label for="globalLesson"><b>Lesson:</b></label><select id="globalLesson"><option value="ALL">All lessons</option></select></div><div class="scopefilter"><label for="globalMastery"><b>Mastery:</b></label><select id="globalMastery"><option value="all">All words</option><option value="practice">Needs practice</option><option value="unseen">Not yet tested</option><option value="mastered">Mastered</option></select></div><span id="lessonFilterStatus" class="small" role="status"></span><span class="small">Lessons match your exam and optional word level. Your exam also selects question styles. Filters apply across Learn, Flashcards, and your next Test or Practice session. Exam pools are editorial, not official lists.</span></div></details>
 <nav><button class="tab active" data-view="study">Learn</button><button class="tab" data-view="flash">Flashcards</button><button class="tab" data-view="test">Test</button><button class="tab" data-view="progress">Progress</button></nav>
 </div></header>
 
 <main>
 <section id="study" class="view panel">
-<h2 style="margin-top:0">Learn</h2><details id="studyAbout" class="compactDetails" open><summary>About Learn and levels</summary><p class="small">Learn one word at a time, or switch to a denser browse view. Click any browse card for a deeper word view.</p>
+<div class="learnHeading"><h2>Learn</h2><details id="studyAbout" class="studyAbout"><summary aria-label="About Learn and levels" title="About Learn and levels">ⓘ</summary><div class="studyAboutBody"><p class="small">Learn one word at a time, or switch to a denser browse view. Click any browse card for a deeper word view.</p>
 <p class="small">Levels are editorial study recommendations, not official exam word lists. Exam pools overlap and include foundational words. Start with an earlier level when useful; mastery is shared across exams.</p>
-</details>
+</div></details></div>
 <p id="storageNotice" class="focuswarn hidden" role="status">Storage is unavailable. You can keep learning, but progress lasts only for this temporary session.</p>
-<p id="lessonInfo" class="small"></p>
-<details id="studyOptions" class="compactDetails" open><summary id="studyOptionsSummary">Study options &amp; search</summary><div class="toolbar">
-<select id="studyView" aria-label="Study view"><option value="one" selected>Learn one at a time</option><option value="cards">Browse cards</option><option value="week">Compact list</option></select>
-<input id="search" aria-label="Search words or ideas" placeholder="Search words or ideas (try “fear”, “help”, “strange”)…">
+<div class="studyControls">
+<select id="studyView" aria-label="Study view"><option value="one" selected>One word</option><option value="cards">Browse cards</option><option value="week">Compact list</option></select>
 <select id="studyOrder" aria-label="Study order"><option value="alpha">A–Z</option><option value="practice">Needs practice first</option><option value="random">Shuffle</option></select>
-</div></details>
+<button class="btn studySearchToggle" id="searchToggle" type="button" aria-label="Search words or ideas" aria-controls="studySearchRow" aria-expanded="false" title="Search words or ideas"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="M16 16l5 5"></path></svg></button>
+</div>
+<div id="studySearchRow" class="studySearchRow hidden"><input id="search" type="search" aria-label="Search words or ideas" placeholder="Search words or ideas…"><button class="btn" id="clearSearch" type="button" aria-label="Clear search">×</button></div>
+<p id="activeSearch" class="small" role="status"></p><p id="lessonInfo" class="small"></p>
 <div id="practiceHelp" class="small hidden"><b>Needs practice first</b> means words you have actually missed on prior graded sessions. Untested words are not labeled weak.</div>
 <div id="studyContent"></div>
 </section>
 
 <section id="flash" class="view panel hidden">
 <h2>Flashcards</h2><div class="status" id="flashStatus"></div>
-<div class="reader"><div class="readerCard"><div id="flashFront"><div class="readerWord" id="flashWord"></div><div class="small">Think of the meaning, then reveal.</div></div><div id="flashBack" class="hidden"><div class="meaning" id="flashDef"></div><div class="example" id="flashEx"></div></div></div>
-<div class="controls"><button class="btn" id="flashPrev">← Previous</button><button class="btn primary" id="flashReveal">Reveal</button><button class="btn" id="flashShuffle">Shuffle</button><button class="btn" id="flashNext">Next →</button></div>
-<div class="small keyboardHint" style="text-align:center;margin-top:8px"><span class="kbd">←</span>/<span class="kbd">→</span> previous/next · <span class="kbd">Space</span> reveal</div></div>
+<div class="reader"><div class="readerCard flashCard swipeCard" id="flashCard" role="button" tabindex="0" aria-label="Flip flashcard" aria-pressed="false"><div id="flashFront"><div class="readerWord" id="flashWord"></div><div class="small">Think of the meaning, then tap to flip.<span class="swipeHint"> Swipe to change cards.</span></div></div><div id="flashBack" class="hidden"><div class="meaning" id="flashDef"></div><div class="example" id="flashEx"></div><div class="small">Tap to flip back.<span class="swipeHint"> Swipe to change cards.</span></div></div></div>
+<div class="controls"><button class="btn" id="flashPrev">← Previous</button><button class="btn" id="flashNext">Next →</button></div>
+<div class="small keyboardHint" style="text-align:center;margin-top:8px"><span class="kbd">←</span>/<span class="kbd">→</span> previous/next · <span class="kbd">Enter</span>/<span class="kbd">Space</span> flip</div></div>
 </section>
 
 <section id="test" class="view panel hidden">
-<div id="testSetup" class="setup"><h2>Test</h2><p class="small">Choose scored or practice, then set difficulty, size, and word selection. Question count is capped by the words available in your selected lesson and filters.</p>
-<label>Session type</label><select id="sessionType"><option value="scored">Scored Test — counts toward mastery and scored Progress</option><option value="practice">Practice — earns effort rewards; does not affect mastery or scored Progress</option></select>
-<label>Difficulty</label><select id="practiceDifficulty"><option value="test">Test — recognition and context</option><option value="challenge">Challenge — more application and context</option><option value="god">👑 God Mode — advanced application and relationships</option></select>
-<label>Questions</label><select id="testN"><option>10</option><option selected>20</option><option>30</option><option>50</option></select>
-<label>Word selection</label><select id="testPool"><option value="mixed">Balanced mix</option><option value="practice">Needs practice</option><option value="unseen">Not yet tested</option><option value="mastered">Mastered review</option></select>
-<div class="small" style="margin-top:6px">Scored Tests track graded attempts, correct answers, misses, and mistaken choices. Practice uses the same question engine and Coach Mode but does not change Progress. “Needs practice” uses actual misses; “Not yet tested” means zero graded attempts.</div>
+<div id="testSetup" class="setup"><h2>Test</h2><p class="small setupIntro">Scored Tests count toward mastery; Practice does not.</p>
+<div class="setupFields"><div><label for="sessionType">Session type</label><select id="sessionType"><option value="scored">Scored Test</option><option value="practice">Practice</option></select></div>
+<div><label for="practiceDifficulty">Difficulty</label><select id="practiceDifficulty"><option value="test">Test</option><option value="challenge">Challenge</option><option value="god">👑 God Mode</option></select></div>
+<div><label for="testN">Questions</label><select id="testN"><option>10</option><option selected>20</option><option>30</option><option>50</option></select></div>
+<div><label for="testPool">Word selection</label><select id="testPool"><option value="mixed">Balanced mix</option><option value="practice">Needs practice</option><option value="unseen">Not yet tested</option><option value="mastered">Mastered review</option></select></div></div>
+<details class="setupHelp"><summary>About these options</summary><p class="small">Question count is capped by the words available in your selected lesson and filters. Scored Tests track graded attempts, correct answers, misses, and mistaken choices. Practice uses the same question engine and Coach Mode, earns effort rewards, and does not change mastery or scored Progress. Test emphasizes recognition and context; Challenge adds application; God Mode adds advanced application and relationships. “Needs practice” uses actual misses; “Not yet tested” means zero graded attempts.</p></details>
 <div class="controls"><button class="btn primary" id="startTestBtn">Start</button></div><div id="testSetupStatus" class="status" role="status"></div></div><div id="testRun" class="hidden"></div>
 </section>
 
@@ -108,12 +126,13 @@ table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:9px;bord
 </section>
 
 <section id="progress" class="view panel hidden"><h2>Progress & Rewards</h2>
-<div class="focuswarn"><b>Stars:</b> 70% = ★, 85% = ★★, 95%+ = ★★★. Challenge at 90%+ earns a bonus ★. God Mode at 85%+ earns a bonus ★.</div>
+<div class="focuswarn"><b id="progressStars"></b><br>Tests: 70% = ★, 85% = ★★, 95%+ = ★★★.<br>Challenge at 90%+ or God Mode at 85%+ earns a bonus ★.<br>Completed Practice sessions earn ★ per 10 active minutes.</div>
 <div id="badges"></div><h3>Test history</h3><div id="sessions"></div><h3>Words needing practice</h3><div id="practiceWords"></div></section>
 <section id="settingsPanel" class="panel hidden" style="max-width:1100px;margin:18px auto 50px;padding:18px">
 <div style="display:flex;justify-content:space-between;align-items:center"><div><h2 style="margin:0">Settings</h2><p class="small">Parent/testing utilities.</p></div><button class="btn" id="closeSettings">Close</button></div>
 <details id="licenseInfo" class="coach"><summary><b>About &amp; Licenses</b></summary><p class="small">Public-source vocabulary: <a href="https://github.com/carryword/english-vocabulary/tree/91741957c8d23eb0feb7365678721b6d34cc7c65">carryword</a> (<a href="docs/licenses/carryword-MIT.txt">MIT</a>); <a href="https://github.com/globalwordnet/english-wordnet/tree/9b6aca775ae10ad3d2dc9956e8ad42a4ce1e076b">The Open English WordNet Team</a> and Princeton University WordNet (<a href="docs/licenses/wordnet-LICENSE.md">CC BY 4.0</a>, <a href="docs/licenses/Princeton-WordNet.txt">WordNet terms</a>). Study fields and levels adapted for Word Quest; <a href="docs/VOCABULARY_SETS.md">source and adaptation notes</a> · <a href="LICENSE">Project license</a><span id="mobileLicenses"></span></p><p class="small">SSAT® is a registered trademark of The Enrollment Management Association, Inc. Word Quest is not affiliated with or endorsed by The Enrollment Management Association. Exam names identify the tests only; Word Quest is not affiliated with or endorsed by their owners.</p></details>
-<h3>Reset testing data</h3><p class="small">Useful while testing the app. “All” clears every local score and mastery record. Recent resets remove matching session history/rewards; because older app versions did not retain per-question event logs, their word-level mastery cannot always be rolled back exactly.</p>
+<h3>Feedback</h3><p class="small">Send suggestions or report a problem to <a href="mailto:fansoftwaresupport@gmail.com?subject=Word%20Quest%20feedback">fansoftwaresupport@gmail.com</a>. This opens your email app; please do not include personal information.</p>
+<h3>Reset testing data</h3><p class="small">Useful while testing the app. “All” clears local scores, practice activity and mastery. Recent resets remove matching session history/rewards; because older app versions did not retain per-question event logs, their word-level mastery cannot always be rolled back exactly.</p>
 <div class="controls" style="justify-content:flex-start"><button class="btn" data-reset="hour">Reset last hour</button><button class="btn" data-reset="day">Reset last 24 hours</button><button class="btn" data-reset="all">Reset all progress</button></div>
 <div id="resetConfirm" class="hidden" style="border:1px solid var(--line);border-radius:12px;padding:14px;margin-top:12px"></div>
 </section></main><div id="wordModal" class="modal hidden"><div class="modalbox"><div class="modalhead"><div><div class="small">WORD DEEP DIVE</div><div class="readerWord" id="modalWord"></div></div><button class="modalclose" id="modalClose">×</button></div><div id="modalBody"></div></div></div>
@@ -164,7 +183,7 @@ function adminResetFromURL(){
     state={xp:0,stars:0,stats:{},sessions:[],badges:{},practice:{sessions:0,activeMs:0,questions:0,correct:0,days:{}}};
     storage.set(KEY,JSON.stringify(state));
     storage.set(KEY,JSON.stringify(state));
-    document.body.innerHTML='<main style="max-width:700px;margin:60px auto;font-family:system-ui;padding:20px"><h1>Reset complete</h1><p>All Word Quest scores, mastery, XP, stars, badges, and test history were cleared on this browser.</p><p>Close this tab and reopen the normal app URL.</p></main>';
+    document.body.innerHTML='<main style="max-width:700px;margin:60px auto;font-family:system-ui;padding:20px"><h1>Reset complete</h1><p>All Word Quest scores, practice activity, mastery, stars, badges, and test history were cleared on this browser.</p><p>Close this tab and reopen the normal app URL.</p></main>';
     return;
   }
 
@@ -209,7 +228,7 @@ function adminResetFromURL(){
   }
 
   storage.set(KEY,JSON.stringify(state));
-  document.body.innerHTML=`<main style="max-width:700px;margin:60px auto;font-family:system-ui;padding:20px"><h1>Reset complete</h1><p>Removed ${removed.length} scored session${removed.length===1?'':'s'} from the last ${cmd==='reset-hour'?'hour':'24 hours'}.</p><p>Session history, stars, XP, and session-based badges were rolled back. Older per-word mastery evidence is retained because earlier app versions did not store enough event detail for an exact partial rollback.</p><p>Close this tab and reopen the normal app URL.</p></main>`;
+  document.body.innerHTML=`<main style="max-width:700px;margin:60px auto;font-family:system-ui;padding:20px"><h1>Reset complete</h1><p>Removed ${removed.length} scored session${removed.length===1?'':'s'} from the last ${cmd==='reset-hour'?'hour':'24 hours'}.</p><p>Session history, stars, and session-based badges were rolled back. Older per-word mastery evidence is retained because earlier app versions did not store enough event detail for an exact partial rollback.</p><p>Close this tab and reopen the normal app URL.</p></main>`;
   throw new Error('admin-reset-complete');
 }
 
@@ -218,8 +237,18 @@ try{adminResetFromURL()}catch(e){if(e.message!=='admin-reset-complete')throw e}
 let currentView='study',quiz=null,readerIndex=0,flash=[],fi=0,revealed=false;
 
 function save(){storage.set(KEY,JSON.stringify(state));renderTop()}
-function renderTop(){xpTop.textContent=`${state.xp} XP`;starsTop.textContent=`★ ${state.stars}`}
+function renderTop(){starsTop.textContent=`★ ${state.stars}`}
 function st(w){let z=state.stats[w]||(state.stats[w]={seen:0,right:0,wrong:0,confusions:{}});z.byMode=z.byMode||{};z.byType=z.byType||{};z.hardTypes=z.hardTypes||{};return z}
+function recordPracticeWord(kind,word){
+ let key=kind==='learn'?'learnWords':'flashWords',words=state.practice[key]||(state.practice[key]={});
+ if(!Object.prototype.hasOwnProperty.call(words,word)){words[word]=true;save()}
+}
+function answerQuestion(index){
+ let q=quiz.qs[quiz.i];
+ if(!q||!q.choices[index])return;
+ if(!quiz.scored&&quiz.answers[quiz.i]===null){state.practice.answered=(state.practice.answered||0)+1;save()}
+ quiz.answers[quiz.i]=q.choices[index];renderQuestion();
+}
 function masteryLevel(w){
  let z=st(w),attempts=z.right+z.wrong,acc=attempts?z.right/attempts:0;
  let hardCorrect=Object.values(z.hardTypes||{}).reduce((n,v)=>n+(v.right||0),0);
@@ -238,13 +267,15 @@ function scopeName(scope){return Array.from(globalWeek.options).find(option=>opt
 function examName(exam){return Array.from(globalExam.options).find(option=>option.value===(exam||'ALL'))?.textContent||exam||'All exams'}
 function lessonName(id){if(!id||id==='ALL')return 'All lessons';let lesson=LESSONS.find(x=>x.lessonId===id);return lesson?`Lesson ${lesson.order}`:id}
 function renderLessonOptions(){
- let selected=globalLesson.value,level=globalWeek.value;
- globalLesson.innerHTML='<option value="ALL">All lessons</option>'+LESSONS.filter(x=>level==='ALL'||x.level===level).map(x=>`<option value="${esc(x.lessonId)}">${esc(`${level==='ALL'?scopeName(x.level)+' · ':''}${lessonName(x.lessonId)} · ${x.wordIds.length} word${x.wordIds.length===1?'':'s'}`)}</option>`).join('');
- globalLesson.value=Array.from(globalLesson.options).some(x=>x.value===selected)?selected:'ALL';
+ let selected=globalLesson.value,level=globalWeek.value,exam=globalExam.value,profile=EXAM_PROFILES[exam];
+ globalLesson.innerHTML='<option value="ALL">All lessons</option>'+LESSONS.filter(x=>(level==='ALL'||x.level===level)&&(exam==='ALL'||profile?.levels.includes(x.level))).map(x=>`<option value="${esc(x.lessonId)}">${esc(`${level==='ALL'?scopeName(x.level)+' · ':''}${lessonName(x.lessonId)} · ${x.wordIds.length} word${x.wordIds.length===1?'':'s'}`)}</option>`).join('');
+ let retained=Array.from(globalLesson.options).some(x=>x.value===selected);
+ globalLesson.value=retained?selected:'ALL';
+ return !!selected&&selected!=='ALL'&&!retained;
 }
 function renderLessonInfo(){
  let lesson=LESSONS.find(x=>x.lessonId===globalLesson.value);
- if(!lesson){lessonInfo.textContent='Choose a short lesson, or keep All lessons for mixed review across the selected level.';return}
+ if(!lesson){lessonInfo.textContent='';return}
  let members=WORDS.filter(x=>lesson.wordIds.includes(x.id)),tested=members.filter(x=>st(x.word).right+st(x.word).wrong>0).length,mastered=members.filter(x=>masteryLevel(x.word)>=4).length;
  lessonInfo.textContent=`${lessonName(lesson.lessonId)} · ${members.length} word${members.length===1?'':'s'} · ${tested} tested · ${mastered} mastered`;
 }
@@ -256,10 +287,12 @@ function simpleSyn(x){let s=clean(x.synonym);return s && s.split(/\s+/).length<=
 function simpleAnt(x){let s=clean(x.antonym);return s && s.split(/\s+/).length<=2 ? s : ''}
 
 document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>switchView(b.dataset.view)));
-function switchView(v){currentView=v;document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x.dataset.view===v));document.querySelectorAll('.view').forEach(x=>x.classList.toggle('hidden',x.id!==v));if(v==='study')renderStudy();if(v==='flash')resetFlash();if(v==='progress')renderProgress()}
-function updateScopeSummary(){let exam=globalExam.selectedOptions[0].textContent,level=globalWeek.value==='ALL'?'All levels':({ 'SSAT-E':'Elementary','SSAT-M':'Middle','SSAT-U':'Upper' }[globalWeek.value]||scopeName(globalWeek.value)),lesson=lessonName(globalLesson.value),mastery=globalMastery.selectedOptions[0].textContent,count=Number(globalExam.value!=='ALL')+Number(globalWeek.value!=='ALL')+Number(globalLesson.value!=='ALL')+Number(globalMastery.value!=='all');filterLabel.textContent=`Filters${count?` (${count})`:''}`;scopeSelection.textContent=`${exam} · ${level} · ${lesson} · ${mastery}`}
+function updateReaderMode(){document.body.classList.toggle('readerMode',settingsPanel.classList.contains('hidden')&&(currentView==='flash'||(currentView==='study'&&studyView.value==='one')))}
+function switchView(v){currentView=v;document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x.dataset.view===v));document.querySelectorAll('.view').forEach(x=>x.classList.toggle('hidden',x.id!==v));updateReaderMode();if(v==='study')renderStudy();if(v==='flash')resetFlash();if(v==='test'&&matchMedia('(max-width:700px)').matches)scopePanel.open=false;if(v==='progress')renderProgress()}
+function updateScopeSummary(){let exam=globalExam.selectedOptions[0].textContent,level=globalWeek.value==='ALL'?'All levels':({ 'SSAT-E':'Elementary','SSAT-M':'Middle','SSAT-U':'Upper' }[globalWeek.value]||scopeName(globalWeek.value)),lesson=lessonName(globalLesson.value),mastery=globalMastery.selectedOptions[0].textContent,count=Number(globalExam.value!=='ALL')+Number(globalWeek.value!=='ALL')+Number(globalLesson.value!=='ALL')+Number(globalMastery.value!=='all');filterLabel.textContent=`Filters${count?` (${count})`:''}`;scopeSelection.textContent=`${exam}${globalWeek.value==='ALL'?'':` · ${level}`} · ${lesson} · ${mastery}`;levelRefinementSummary.textContent=globalWeek.value==='ALL'?'Refine by word level (optional)':`Word level: ${level}`}
 function globalFilterChanged(){updateScopeSummary();readerIndex=0;renderStudy();resetFlash();if(quiz)alert('The new global filter will apply to your next session. This session will stay unchanged.');}
-globalExam.addEventListener('change',globalFilterChanged);globalWeek.addEventListener('change',()=>{renderLessonOptions();globalFilterChanged()});globalLesson.addEventListener('change',globalFilterChanged);globalMastery.addEventListener('change',globalFilterChanged);
+function scopeFilterChanged(){lessonFilterStatus.textContent=renderLessonOptions()?'The previous lesson is outside this selection; using All lessons.':'';globalFilterChanged()}
+globalExam.addEventListener('change',scopeFilterChanged);globalWeek.addEventListener('change',scopeFilterChanged);globalLesson.addEventListener('change',()=>{lessonFilterStatus.textContent='';globalFilterChanged()});globalMastery.addEventListener('change',globalFilterChanged);
 
 function orderedStudy(){
  let q=search.value.toLowerCase().trim(),terms=semanticTerms(q),a=pool().filter(x=>!q||terms.some(t=>Object.values(x).join(' ').toLowerCase().includes(t))),o=studyOrder.value;
@@ -279,26 +312,60 @@ const CONCEPTS={
 };
 function semanticTerms(q){q=q.toLowerCase().trim();let out=[q];for(let [k,v] of Object.entries(CONCEPTS))if(k===q||v.includes(q))out.push(k,...v);return [...new Set(out)]}
 function openWord(w){let x=WORDS.find(z=>z.word===w);if(!x)return;let z=st(w),tested=z.right+z.wrong,rate=tested?Math.round(z.right/tested*100):null;
+ recordPracticeWord('learn',w);
  modalWord.textContent=x.word;modalBody.innerHTML=`<div class="meaning" style="font-size:1.15rem">${esc(x.meaning)}</div><div class="detailgrid"><div class="detailbox"><b>Synonym / clue</b><div>${esc(x.synonym)}</div></div><div class="detailbox"><b>Antonym / contrast</b><div>${esc(x.antonym)}</div></div><div class="detailbox"><b>Example</b><div>${exampleHTML(x)}</div></div><div class="detailbox"><b>Learning record</b><div>${tested?`${z.right} right · ${z.wrong} missed · ${rate}% · ${masteryName(w)}`:'Not yet tested'}</div></div></div><div class="small" style="margin-top:12px">Tip: explain the word aloud in your own words, then make a new sentence with it.</div>`;
  wordModal.classList.remove('hidden');
 }
 modalClose.onclick=()=>wordModal.classList.add('hidden');wordModal.onclick=e=>{if(e.target===wordModal)wordModal.classList.add('hidden')};
+function enableCardSwipe(card,previous,next,canStart=()=>true){
+ let start=null;
+ card.addEventListener('touchstart',e=>{let t=e.touches[0];start=e.touches.length===1&&canStart(e)?{id:t.identifier,x:t.clientX,y:t.clientY}:null},{passive:true});
+ card.addEventListener('touchmove',e=>{if(e.touches.length!==1)start=null},{passive:true});
+ card.addEventListener('touchcancel',()=>{start=null},{passive:true});
+ card.addEventListener('touchend',e=>{
+   if(!start||e.touches.length){start=null;return}
+   let t=Array.from(e.changedTouches).find(t=>t.identifier===start.id);
+   if(!t){start=null;return}
+   let dx=t.clientX-start.x,dy=t.clientY-start.y;start=null;
+   if(Math.abs(dx)<50||Math.abs(dx)<=Math.abs(dy)*1.5)return;
+   if(e.cancelable)e.preventDefault();
+   (dx<0?next:previous)();
+ },{passive:false});
+}
 function renderStudy(){
- updateStudyOptionsSummary();renderLessonInfo();
+ updateReaderMode();updateSearchState();renderLessonInfo();
  let a=orderedStudy(),v=studyView.value;practiceHelp.classList.toggle('hidden',studyOrder.value!=='practice');
  if(!a.length){studyContent.innerHTML='<p class="small">No matching words.</p>';return}
  if(readerIndex>=a.length)readerIndex=0;
  if(v==='cards'){studyContent.innerHTML=`<div class="status">${a.length} words · click a card for a deeper view</div><div class="grid">${a.map(card).join('')}</div>`;studyContent.querySelectorAll('[data-word]').forEach(el=>el.onclick=()=>openWord(el.dataset.word));}
  if(v==='week')studyContent.innerHTML=`<div class="status">${a.length} words</div><div class="weeklist">${a.map(x=>`<div class="weekrow"><b>${esc(x.word)}</b><span>${esc(x.meaning)}</span><span class="small">${esc(x.synonym)}</span></div>`).join('')}</div>`;
- if(v==='one'){let x=a[readerIndex];studyContent.innerHTML=`<div class="reader"><div class="status">Word ${readerIndex+1} of ${a.length}</div><div class="readerCard"><div class="readerWord">${esc(x.word)}</div><div class="meaning">${esc(x.meaning)}</div><div class="small"><b>Synonym / clue:</b> ${esc(x.synonym)}<br><b>Antonym / contrast:</b> ${esc(x.antonym)}</div><div class="example">${exampleHTML(x)}</div><span class="tag">${esc(scopeName(x.week))}</span></div><div class="controls"><button class="btn" id="studyPrev">← Previous</button><button class="btn primary" id="studyNext">Next →</button></div><div class="small keyboardHint" style="text-align:center;margin-top:8px"><span class="kbd">←</span>/<span class="kbd">→</span> previous/next</div></div>`;studyPrev.onclick=()=>{readerIndex=(readerIndex-1+a.length)%a.length;renderStudy()};studyNext.onclick=()=>{readerIndex=(readerIndex+1)%a.length;renderStudy()}}
+ if(v==='one'){let x=a[readerIndex];if(currentView==='study'&&settingsPanel.classList.contains('hidden'))recordPracticeWord('learn',x.word);studyContent.innerHTML=`<div class="reader"><div class="status">Word ${readerIndex+1} of ${a.length}<span class="swipeHint"> · Swipe to navigate</span></div><div class="readerCard swipeCard"><div class="readerWord">${esc(x.word)}</div><div class="meaning">${esc(x.meaning)}</div><div class="small"><b>Synonym / clue:</b> ${esc(x.synonym)}<br><b>Antonym / contrast:</b> ${esc(x.antonym)}</div><div class="example">${exampleHTML(x)}</div><span class="tag">${esc(scopeName(x.week))}</span></div><div class="controls"><button class="btn" id="studyPrev">← Previous</button><button class="btn primary" id="studyNext">Next →</button></div><div class="small keyboardHint" style="text-align:center;margin-top:8px"><span class="kbd">←</span>/<span class="kbd">→</span> previous/next · <span class="kbd">Enter</span>/<span class="kbd">Space</span> next</div></div>`;studyPrev.onclick=()=>{readerIndex=(readerIndex-1+a.length)%a.length;renderStudy()};studyNext.onclick=()=>{readerIndex=(readerIndex+1)%a.length;renderStudy()}}
 }
-function updateStudyOptionsSummary(){let view=studyView.selectedOptions[0].textContent,order=studyOrder.value==='alpha'?'':` · ${studyOrder.selectedOptions[0].textContent}`,searching=search.value.trim()?' · Search active':'';studyOptionsSummary.textContent=`Study options · ${view}${order}${searching}`}
-search.oninput=()=>{updateStudyOptionsSummary();readerIndex=0;renderStudy()};studyView.onchange=()=>{updateStudyOptionsSummary();readerIndex=0;renderStudy()};studyOrder.onchange=()=>{updateStudyOptionsSummary();readerIndex=0;renderStudy()};
+function updateSearchState(){let q=search.value.trim();searchToggle.classList.toggle('activeSearch',!!q);activeSearch.textContent=q&&studySearchRow.classList.contains('hidden')?`Search: ${q}`:''}
+searchToggle.onclick=()=>{let open=studySearchRow.classList.contains('hidden');studySearchRow.classList.toggle('hidden',!open);searchToggle.setAttribute('aria-expanded',String(open));updateSearchState();if(open)search.focus()};
+clearSearch.onclick=()=>{search.value='';readerIndex=0;renderStudy();search.focus()};
+search.oninput=()=>{readerIndex=0;renderStudy()};studyView.onchange=()=>{readerIndex=0;renderStudy()};studyOrder.onchange=()=>{readerIndex=0;renderStudy()};
+document.addEventListener('click',e=>{if(!studyAbout.contains(e.target))studyAbout.open=false});
 
 function resetFlash(){flash=shuffle(pool());fi=0;renderFlash()}
-function renderFlash(){if(!flash.length){flashStatus.textContent='No words in this filter.';flashWord.textContent='No matching words';flashDef.textContent='';flashEx.textContent='';revealed=false;flashFront.classList.remove('hidden');flashBack.classList.add('hidden');flashReveal.textContent='Reveal';return}let x=flash[fi];flashStatus.textContent=`Card ${fi+1} of ${flash.length} · ${scopeName(x.week)}`;flashWord.textContent=x.word;flashDef.innerHTML=`<b>${esc(x.meaning)}</b><br><br><span class="small">Synonym / clue: ${esc(x.synonym)}<br>Antonym / contrast: ${esc(x.antonym)}</span>`;flashEx.innerHTML=exampleHTML(x);revealed=false;flashFront.classList.remove('hidden');flashBack.classList.add('hidden');flashReveal.textContent='Reveal'}
-flashReveal.onclick=()=>{if(!flash.length)return;revealed=!revealed;flashFront.classList.toggle('hidden',revealed);flashBack.classList.toggle('hidden',!revealed);flashReveal.textContent=revealed?'Hide':'Reveal';if(revealed){st(flash[fi].word).seen++;save()}};
-flashNext.onclick=()=>{if(flash.length){fi=(fi+1)%flash.length;renderFlash()}};flashPrev.onclick=()=>{if(flash.length){fi=(fi-1+flash.length)%flash.length;renderFlash()}};flashShuffle.onclick=resetFlash;
+function renderFlash(){revealed=false;flashFront.classList.remove('hidden');flashBack.classList.add('hidden');flashCard.setAttribute('aria-pressed','false');flashCard.setAttribute('aria-disabled',String(!flash.length));flashCard.tabIndex=flash.length?0:-1;flashCard.scrollTop=0;if(!flash.length){flashStatus.textContent='No words in this filter.';flashWord.textContent='No matching words';flashDef.textContent='';flashEx.textContent='';flashCard.setAttribute('aria-label','No matching words');return}let x=flash[fi];flashStatus.textContent=`Card ${fi+1} of ${flash.length}`;flashWord.textContent=x.word;flashDef.innerHTML=`<b>${esc(x.meaning)}</b><br><br><span class="small">Synonym / clue: ${esc(x.synonym)}<br>Antonym / contrast: ${esc(x.antonym)}</span>`;flashEx.innerHTML=exampleHTML(x);flashCard.setAttribute('aria-label',`Flashcard: ${x.word}. Activate to reveal the meaning.`)}
+function flipFlash(){if(!flash.length)return;revealed=!revealed;flashFront.classList.toggle('hidden',revealed);flashBack.classList.toggle('hidden',!revealed);flashCard.setAttribute('aria-pressed',String(revealed));flashCard.scrollTop=0;let x=flash[fi];flashCard.setAttribute('aria-label',revealed?`Flashcard: ${x.word}. ${x.meaning}. Synonym: ${x.synonym}. Antonym: ${x.antonym}. Example: ${x.example}. Activate to show the word.`:`Flashcard: ${x.word}. Activate to reveal the meaning.`);if(revealed){st(x.word).seen++;recordPracticeWord('flash',x.word);save()}}
+flashCard.onclick=flipFlash;flashCard.onkeydown=e=>{if(e.key==='Enter'||e.code==='Space'){e.preventDefault();e.stopPropagation();flipFlash()}};
+flashNext.onclick=()=>{if(flash.length){fi=(fi+1)%flash.length;renderFlash()}};flashPrev.onclick=()=>{if(flash.length){fi=(fi-1+flash.length)%flash.length;renderFlash()}};
+function swipeView(){
+ if(!settingsPanel.classList.contains('hidden'))return '';
+ if(currentView==='study'&&studyView.value==='one'&&document.getElementById('studyNext'))return 'study';
+ if(currentView==='flash'&&flash.length)return 'flash';
+ if(currentView==='test'&&quiz&&!quiz.completed&&!testRun.classList.contains('hidden')&&testRun.querySelector('.questionSwipe'))return 'test';
+ return '';
+}
+function navigateSwipe(direction){
+ let view=swipeView();
+ if(view==='study')document.getElementById(direction<0?'studyPrev':'studyNext').click();
+ if(view==='flash')(direction<0?flashPrev:flashNext).click();
+ if(view==='test'){if(direction<0)prevQuestion();else if(quiz.i<quiz.qs.length-1)nextQuestion()}
+}
+enableCardSwipe(document.querySelector('main'),()=>navigateSwipe(-1),()=>navigateSwipe(1),e=>!!swipeView()&&!e.target.closest('input,textarea,select,summary,a,#studyAbout,[contenteditable="true"]'));
 
 function plausibles(target,hard=false){
  let p=pool().filter(x=>x.word!==target.word),prior=Object.keys(st(target.word).confusions||{}).map(w=>WORDS.find(x=>x.word===w)).filter(Boolean);
@@ -442,8 +509,8 @@ function startQuiz(mode){
 }
 function renderQuestion(){
  let run=document.getElementById('testRun'),q=quiz.qs[quiz.i],sel=quiz.answers[quiz.i];
- run.innerHTML=`<div class="question">${quiz.awayCount?`<div class="focuswarn">Focus tracker: left this session ${quiz.awayCount} time${quiz.awayCount===1?'':'s'}.</div>`:''}<div class="qnum">${quiz.scored?'Scored Test':'Practice'} · ${quiz.mode==='test'?'Standard':quiz.mode==='god'?'God Mode':'Challenge'} · Question ${quiz.i+1} of ${quiz.qs.length}</div><div class="progress"><div style="width:${(quiz.i+1)/quiz.qs.length*100}%"></div></div><div class="qtext">${esc(q.prompt)}</div><div class="choices">${q.choices.map((c,i)=>`<button class="choice ${sel===c?'selected':''}" data-choice="${i}">${String.fromCharCode(65+i)}. ${esc(c)}</button>`).join('')}</div><div class="controls"><button class="btn" id="qPrev" ${quiz.i===0?'disabled':''}>← Previous</button><button class="btn" id="qSkip">Skip</button><button class="btn primary" id="qNext">${quiz.i===quiz.qs.length-1?'Finish':'Next →'}</button></div><div class="small" style="text-align:center;margin-top:8px"><span class="kbd">A–D</span> / <span class="kbd">1–4</span> choose · <span class="kbd">S</span> skip · <span class="kbd">←</span>/<span class="kbd">→</span> navigate · <span class="kbd">Enter</span>/<span class="kbd">Space</span> next</div></div>`;
- run.querySelectorAll('[data-choice]').forEach(b=>b.onclick=()=>{quiz.answers[quiz.i]=q.choices[+b.dataset.choice];renderQuestion()});
+ run.innerHTML=`<div class="question"><div class="questionSwipe swipeCard">${quiz.awayCount?`<div class="focuswarn">Focus tracker: left this session ${quiz.awayCount} time${quiz.awayCount===1?'':'s'}.</div>`:''}<div class="qnum">${quiz.scored?'Scored Test':'Practice'} · ${quiz.mode==='test'?'Standard':quiz.mode==='god'?'God Mode':'Challenge'} · Question ${quiz.i+1} of ${quiz.qs.length}</div><div class="progress"><div style="width:${(quiz.i+1)/quiz.qs.length*100}%"></div></div><div class="qtext">${esc(q.prompt)}</div><div class="choices">${q.choices.map((c,i)=>`<button class="choice ${sel===c?'selected':''}" data-choice="${i}">${String.fromCharCode(65+i)}. ${esc(c)}</button>`).join('')}</div></div><div class="small swipeHint">Swipe between questions; tap Finish to submit.</div><div class="controls"><button class="btn" id="qPrev" ${quiz.i===0?'disabled':''}>← Previous</button><button class="btn" id="qSkip">Skip</button><button class="btn primary" id="qNext">${quiz.i===quiz.qs.length-1?'Finish':'Next →'}</button></div><div class="small keyboardHint" style="text-align:center;margin-top:8px"><span class="kbd">A–D</span> / <span class="kbd">1–4</span> choose · <span class="kbd">S</span> skip · <span class="kbd">←</span>/<span class="kbd">→</span> navigate · <span class="kbd">Enter</span>/<span class="kbd">Space</span> next</div></div>`;
+ run.querySelectorAll('[data-choice]').forEach(b=>b.onclick=()=>answerQuestion(+b.dataset.choice));
  qPrev.onclick=prevQuestion;qSkip.onclick=skipQuestion;qNext.onclick=nextQuestion;
 }
 function prevQuestion(){if(quiz&&quiz.i>0){quiz.i--;renderQuestion()}}
@@ -478,22 +545,39 @@ function gradeQuiz(){
    state.practice.sessions++;state.practice.activeMs+=active;state.practice.questions+=quiz.qs.length;state.practice.correct+=right;state.practice.days[today]=(state.practice.days[today]||0)+active;
    state.xp+=effortXP;state.stars+=effortStars;
    if(state.practice.sessions>=1)state.badges.practice1=true;if(state.practice.sessions>=5)state.badges.practice5=true;if(state.practice.activeMs>=1800000)state.badges.practice30=true;if(active>=600000&&quiz.awayCount===0)state.badges.practiceFocus=true;
-   save();
+   recordReviewDay();save();
    let run=document.getElementById('testRun');
-   run.innerHTML=`<div style="text-align:center"><div class="score ${pct>=80?'good':''}">${pct}%</div><h2>Practice complete</h2><p><b>${right} / ${quiz.qs.length}</b> correct</p><p><b>+${effortXP} XP${effortStars?` · +${effortStars} ★`:''}</b> for focused practice effort</p><p class="small">Practice rewards effort, but does not change word mastery or scored-test Progress.</p><p class="small">Active ${fmt(active)} · away ${quiz.awayCount}× / ${fmt(quiz.awayMs)}</p></div>${coachHTML(missed)}<h3>Answer review</h3>${quiz.qs.map((q,i)=>`<div class="resultrow"><b>${i+1}. ${esc(q.prompt)}</b><br><span class="${quiz.answers[i]===q.answer?'good':'bad'}">${quiz.answers[i]==null?'Skipped':'Your answer: '+esc(quiz.answers[i])}</span>${quiz.answers[i]!==q.answer?`<br><span class="good">Correct: ${esc(q.answer)}</span>`:''}<div class="small">${esc(q.explain)}</div></div>`).join('')}<div class="controls"><button class="btn primary" id="newSession">New Session</button><button class="btn" id="viewProgress">View Progress</button></div>`;
+   run.innerHTML=`<div style="text-align:center"><div class="score ${pct>=80?'good':''}">${pct}%</div><h2>Practice complete</h2><p><b>${right} / ${quiz.qs.length}</b> correct</p>${effortStars?`<p><b>+${effortStars} ★</b> for active practice time</p>`:''}<p class="small">Practice does not change word mastery or scored-test Progress.</p><p class="small">Active ${fmt(active)} · away ${quiz.awayCount}× / ${fmt(quiz.awayMs)}</p></div>${coachHTML(missed)}<h3>Answer review</h3>${quiz.qs.map((q,i)=>`<div class="resultrow"><b>${i+1}. ${esc(q.prompt)}</b><br><span class="${quiz.answers[i]===q.answer?'good':'bad'}">${quiz.answers[i]==null?'Skipped':'Your answer: '+esc(quiz.answers[i])}</span>${quiz.answers[i]!==q.answer?`<br><span class="good">Correct: ${esc(q.answer)}</span>`:''}<div class="small">${esc(q.explain)}</div></div>`).join('')}<div class="controls"><button class="btn primary" id="newSession">New Session</button><button class="btn" id="viewProgress">View Progress</button></div>`;
    newSession.onclick=()=>resetQuiz(quiz.mode);viewProgress.onclick=()=>switchView('progress');
    let sm=document.getElementById('studyMissed');if(sm)sm.onclick=()=>{switchView('study');search.value=[...new Set(missed.map(m=>m.q.word))].join(' ');studyView.value='cards';renderStudy()};
+   scheduleReview();
    return;
  }
  quiz.qs.forEach((q,i)=>{let s=st(q.word);s.seen++;s.byMode[quiz.mode]=s.byMode[quiz.mode]||{right:0,wrong:0};s.byType[q.type]=s.byType[q.type]||{right:0,wrong:0};let hard=quiz.mode==='challenge'||quiz.mode==='god';if(hard)s.hardTypes[q.type]=s.hardTypes[q.type]||{right:0,wrong:0};if(quiz.answers[i]===q.answer){right++;s.right++;s.byMode[quiz.mode].right++;s.byType[q.type].right++;if(hard)s.hardTypes[q.type].right++;state.xp+=quiz.mode==='test'?10:15}else{s.wrong++;s.byMode[quiz.mode].wrong++;s.byType[q.type].wrong++;if(hard)s.hardTypes[q.type].wrong++;missed.push({q,answer:quiz.answers[i]});let w=quiz.answers[i];if(w!=null)s.confusions[w]=(s.confusions[w]||0)+1}});
  let pct=Math.round(right/quiz.qs.length*100),earned=pct>=95?3:pct>=85?2:pct>=70?1:0;if(quiz.mode==='challenge'&&pct>=90)earned++;if(quiz.mode==='god'&&pct>=85)earned++;state.stars+=earned;
  let duration=Date.now()-quiz.started,active=Math.max(0,duration-quiz.awayMs),modeLabel=quiz.mode==='test'?'Test':quiz.mode==='god'?'God Mode':'Challenge';
- state.sessions.unshift({date:new Date().toLocaleString(),exam:quiz.scope.exam,week:quiz.scope.week,lesson:quiz.scope.lesson,mode:modeLabel,right,total:quiz.qs.length,pct,stars:earned,duration,active,awayCount:quiz.awayCount,awayMs:quiz.awayMs});state.sessions=state.sessions.slice(0,100);awardBadges(pct,modeLabel);save();
+ state.sessions.unshift({date:new Date().toLocaleString(),exam:quiz.scope.exam,week:quiz.scope.week,lesson:quiz.scope.lesson,mode:modeLabel,right,total:quiz.qs.length,pct,stars:earned,duration,active,awayCount:quiz.awayCount,awayMs:quiz.awayMs});state.sessions=state.sessions.slice(0,100);awardBadges(pct,modeLabel);recordReviewDay();save();
  let run=document.getElementById('testRun');
  run.innerHTML=`<div style="text-align:center"><div class="score ${pct>=80?'good':''}">${pct}%</div><h2>${right} / ${quiz.qs.length} correct</h2><div style="font-size:1.8rem;color:var(--gold)">${'★'.repeat(earned)}</div><p class="small">Active ${fmt(active)} · away ${quiz.awayCount}× / ${fmt(quiz.awayMs)}</p></div>${coachHTML(missed)}<h3>Answer review</h3>${quiz.qs.map((q,i)=>`<div class="resultrow"><b>${i+1}. ${esc(q.prompt)}</b><br><span class="${quiz.answers[i]===q.answer?'good':'bad'}">${quiz.answers[i]==null?'Skipped':'Your answer: '+esc(quiz.answers[i])}</span>${quiz.answers[i]!==q.answer?`<br><span class="good">Correct: ${esc(q.answer)}</span>`:''}<div class="small">${esc(q.explain)}</div></div>`).join('')}<div class="controls"><button class="btn primary" id="newSession">New Session</button><button class="btn" id="viewProgress">View Progress</button></div>`;
  newSession.onclick=()=>resetQuiz(quiz.mode);viewProgress.onclick=()=>switchView('progress');
  let rm=document.getElementById('retryMissed'); if(rm)rm.onclick=()=>startRetry(missed);
  let sm=document.getElementById('studyMissed'); if(sm)sm.onclick=()=>{switchView('study');search.value=[...new Set(missed.map(m=>m.q.word))].join(' ');studyView.value='cards';renderStudy()};
+ scheduleReview();
+}
+function recordReviewDay(){
+ if(!window.WordQuestRequestReview)return;
+ if(!state.review||!Array.isArray(state.review.days))state.review={days:[],requested:false};
+ let d=new Date(),day=[d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-');
+ if(state.review.days.length<3&&!state.review.days.includes(day))state.review.days.push(day);
+}
+function scheduleReview(){
+ let review=state.review,completedQuiz=quiz;
+ if(!window.WordQuestRequestReview||!review||review.requested||review.days.length<3)return;
+ setTimeout(()=>{
+   if(state.review!==review||review.requested||quiz!==completedQuiz||!quiz.completed||currentView!=='test'||document.hidden||!settingsPanel.classList.contains('hidden')||testRun.classList.contains('hidden'))return;
+   review.requested=true;save();
+   Promise.resolve().then(()=>window.WordQuestRequestReview()).catch(()=>{if(state.review===review){review.requested=false;save()}});
+ },3000);
 }
 function startRetry(missed){
  let words=[...new Set(missed.map(m=>m.q.word))].map(w=>WORDS.find(x=>x.word===w)).filter(Boolean);
@@ -506,17 +590,19 @@ function awardBadges(pct,mode){let mastered=WORDS.filter(x=>masteryLevel(x.word)
 const BADGES=[['practice1','📘','Practice Started','Complete a practice session.'],['practice5','🧠','Practice Habit','Complete 5 practice sessions.'],['practice30','⏱️','Thirty Focused Minutes','Accumulate 30 active practice minutes.'],['practiceFocus','🎯','Focused Practice','Practice actively for 10 minutes without leaving the page.'],['perfect','🏆','Perfect Run','Score 100%.'],['challenge','⚡','Challenge Accepted','Score 80%+ in Challenge.'],['god','👑','God Mode','Score 80%+ in God Mode.'],['focus','🎯','Locked In','Finish without leaving the page.'],['m25','⭐','Word Scout','Master 25 words.'],['m50','🌟','Word Ranger','Master 50 words.'],['m100','👑','Word Master','Master 100 words.'],['five','🔥','On a Roll','Complete 5 graded sessions.'],['ten','🚀','Quest Regular','Complete 10 graded sessions.'],['s10','⭐','Star Collector','Earn 10 stars.'],['s25','🌠','Star Hunter','Earn 25 stars.'],['s50','🏆','Star Champion','Earn 50 stars.']];
 function renderProgress(){let modes=['Test','Challenge','God Mode'];let modeStats=modes.map(m=>{let a=state.sessions.filter(s=>s.mode===m),q=a.reduce((n,s)=>n+s.total,0),r=a.reduce((n,s)=>n+s.right,0);return {m,n:a.length,p:q?Math.round(r/q*100):null}});let modeCards=`<h3>Difficulty progress</h3><div class="badgegrid">${modeStats.map((x,i)=>`<div class="reward"><div class="icon">${['🧭','⚡','👑'][i]}</div><b>${x.m}</b><div>${x.n?`${x.p}% across ${x.n} session${x.n===1?'':'s'}`:'No sessions yet'}</div></div>`).join('')}</div>`;let mastered=WORDS.filter(x=>masteryLevel(x.word)>=4).length;let levels=[0,0,0,0,0];WORDS.forEach(x=>levels[masteryLevel(x.word)]++);
  let pr=state.practice||{sessions:0,activeMs:0,questions:0,correct:0};
- let practiceCards=`<h3>Practice effort</h3><div class="badgegrid"><div class="reward"><b>Practice sessions</b><div style="font-size:1.5rem;font-weight:800">${pr.sessions||0}</div></div><div class="reward"><b>Active practice</b><div style="font-size:1.5rem;font-weight:800">${fmt(pr.activeMs||0)}</div></div><div class="reward"><b>Questions practiced</b><div style="font-size:1.5rem;font-weight:800">${pr.questions||0}</div></div></div><p class="small">Practice earns effort XP/stars for active time and completion, but only scored tests provide mastery evidence.</p>`;
- badges.innerHTML=modeCards+practiceCards+`<h3>Word mastery</h3><div class="badgegrid">${['New','Learning','Familiar','Strong','Mastered'].map((n,i)=>`<div class="reward"><b>${n}</b><div style="font-size:1.5rem;font-weight:800">${levels[i]}</div><div class="small">${i===4?'Validated in harder modes and multiple question types':i===3?'Hard-mode evidence across multiple task types':i===2?'Repeated success in regular practice':i===1?'Has graded attempts':'Not yet tested'}</div></div>`).join('')}</div><p><b>★ ${state.stars}</b> · <b>${state.xp} XP</b> · ${mastered} fully mastered · ${state.sessions.length} graded sessions</p><div class="badgegrid">${BADGES.map(b=>`<div class="reward ${state.badges[b[0]]?'':'locked'}"><div class="icon">${b[1]}</div><b>${b[2]}</b><div class="small">${b[3]}</div></div>`).join('')}</div>`;
+ progressStars.textContent=`★ ${state.stars} total stars`;
+ let practiceCards=`<h3>Practice activity</h3><div class="badgegrid"><div class="reward"><b>Learn words viewed</b><div style="font-size:1.5rem;font-weight:800">${Object.keys(pr.learnWords||{}).length}</div></div><div class="reward"><b>Flashcards revealed</b><div style="font-size:1.5rem;font-weight:800">${Object.keys(pr.flashWords||{}).length}</div></div><div class="reward"><b>Practice answers</b><div style="font-size:1.5rem;font-weight:800">${pr.answered||0}</div></div></div><p class="small">Words and flashcards count distinct words; Practice answers count once per question, even before a session is finished. These new activity counts start with this update. Only scored tests provide mastery evidence.</p>`;
+ badges.innerHTML=practiceCards+modeCards+`<h3>Word mastery</h3><div class="badgegrid">${['New','Learning','Familiar','Strong','Mastered'].map((n,i)=>`<div class="reward"><b>${n}</b><div style="font-size:1.5rem;font-weight:800">${levels[i]}</div><div class="small">${i===4?'At least 4 harder-mode correct across 2 question types and 75% overall':i===3?'At least 2 harder-mode correct across 2 question types and 70% overall':i===2?'At least 3 correct and 65% overall':i===1?'Has scored attempts':'Not yet tested'}</div></div>`).join('')}</div><p>${mastered} fully mastered · ${state.sessions.length} graded sessions</p><div class="badgegrid">${BADGES.map(b=>`<div class="reward ${state.badges[b[0]]?'':'locked'}"><div class="icon">${b[1]}</div><b>${b[2]}</b><div class="small">${b[3]}</div></div>`).join('')}</div>`;
  sessions.innerHTML=state.sessions.length?`<table><tr><th>Date</th><th>Exam</th><th>Level</th><th>Lesson</th><th>Mode</th><th>Score</th><th>Stars</th><th>Active</th><th>Away</th></tr>${state.sessions.map(s=>`<tr><td>${esc(s.date)}</td><td>${esc(examName(s.exam))}</td><td>${esc(scopeName(s.week||'ALL'))}</td><td>${esc(lessonName(s.lesson))}</td><td>${esc(s.mode)}</td><td>${s.right}/${s.total} (${s.pct}%)</td><td>${'★'.repeat(s.stars||0)||'—'}</td><td>${fmt(s.active)}</td><td>${s.awayCount||0}× / ${fmt(s.awayMs)}</td></tr>`).join('')}</table>`:'<p class="small">No graded sessions yet.</p>';
  let weak=Object.entries(state.stats).filter(([w,s])=>s.wrong>0).sort((a,b)=>(b[1].wrong-b[1].right)-(a[1].wrong-a[1].right)).slice(0,20);
  practiceWords.innerHTML=weak.length?`<table><tr><th>Word</th><th>Right</th><th>Wrong</th></tr>${weak.map(([w,s])=>`<tr><td>${esc(w)}</td><td>${s.right}</td><td>${s.wrong}</td></tr>`).join('')}</table>`:'<p class="small">Nothing here yet.</p>';
 }
 document.addEventListener('keydown',e=>{
  if(e.target.matches('input,select,textarea'))return;
- if(quiz&&!quiz.completed){let k=e.key.toLowerCase();if(['a','b','c','d'].includes(k)||['1','2','3','4'].includes(k)){let idx=['1','2','3','4'].includes(k)?(+k-1):'abcd'.indexOf(k),q=quiz.qs[quiz.i];if(q.choices[idx]){e.preventDefault();quiz.answers[quiz.i]=q.choices[idx];renderQuestion()}}else if(k==='s'){e.preventDefault();skipQuestion()}else if(e.key==='ArrowLeft'){e.preventDefault();prevQuestion()}else if(e.key==='ArrowRight'||e.key==='Enter'||e.code==='Space'){e.preventDefault();nextQuestion()}return}
+ if((e.key==='Enter'||e.code==='Space')&&e.target.closest('button,summary,a,[role="button"]'))return;
+ if(quiz&&!quiz.completed){let k=e.key.toLowerCase();if(['a','b','c','d'].includes(k)||['1','2','3','4'].includes(k)){let idx=['1','2','3','4'].includes(k)?(+k-1):'abcd'.indexOf(k),q=quiz.qs[quiz.i];if(q.choices[idx]){e.preventDefault();answerQuestion(idx)}}else if(k==='s'){e.preventDefault();skipQuestion()}else if(e.key==='ArrowLeft'){e.preventDefault();prevQuestion()}else if(e.key==='ArrowRight'||e.key==='Enter'||e.code==='Space'){e.preventDefault();nextQuestion()}return}
  if(currentView==='study'&&studyView.value==='one'){let a=orderedStudy();if(e.key==='ArrowLeft'){readerIndex=(readerIndex-1+a.length)%a.length;renderStudy()}if(e.key==='ArrowRight'||e.key==='Enter'||e.code==='Space'){e.preventDefault();readerIndex=(readerIndex+1)%a.length;renderStudy()}}
- if(currentView==='flash'){if(e.key==='ArrowLeft')flashPrev.click();if(e.key==='ArrowRight')flashNext.click();if(e.code==='Space'||e.key==='Enter'){e.preventDefault();flashReveal.click()}}
+ if(currentView==='flash'){if(e.key==='ArrowLeft')flashPrev.click();if(e.key==='ArrowRight')flashNext.click();if(e.code==='Space'||e.key==='Enter'){e.preventDefault();flipFlash()}}
 });
 function handleAppState(isActive){if(!quiz||quiz.completed)return;if(!isActive){if(!quiz.awayStart){quiz.awayStart=Date.now();quiz.awayCount++}}else if(quiz.awayStart){quiz.awayMs+=Date.now()-quiz.awayStart;quiz.awayStart=null;renderQuestion()}}
 document.addEventListener('visibilitychange',()=>handleAppState(!document.hidden));
@@ -527,12 +613,12 @@ function handleMobileBack(){
  return false;
 }
 
-gearBtn.onclick=()=>{document.querySelectorAll('.view').forEach(x=>x.classList.add('hidden'));settingsPanel.classList.remove('hidden')};
+gearBtn.onclick=()=>{document.querySelectorAll('.view').forEach(x=>x.classList.add('hidden'));settingsPanel.classList.remove('hidden');updateReaderMode()};
 closeSettings.onclick=()=>{settingsPanel.classList.add('hidden');switchView(currentView||'study')};
 document.querySelectorAll('[data-reset]').forEach(b=>b.onclick=()=>{
  let kind=b.dataset.reset,label=kind==='hour'?'the last hour':kind==='day'?'the last 24 hours':'ALL progress';
  resetConfirm.classList.remove('hidden');
- resetConfirm.innerHTML=`<b>Reset ${label}?</b><p class="small">${kind==='all'?'This clears scores, mastery, XP, stars, badges, and history on this browser.':'This removes recent scored-session history and associated rewards. Older aggregate mastery evidence may remain.'}</p><div class="controls" style="justify-content:flex-start"><button class="btn primary" id="doReset">Yes, reset</button><button class="btn" id="cancelReset">Cancel</button></div>`;
+ resetConfirm.innerHTML=`<b>Reset ${label}?</b><p class="small">${kind==='all'?'This clears scores, practice activity, mastery, stars, badges, and history on this browser.':'This removes recent scored-session history and associated rewards. Older aggregate mastery evidence may remain.'}</p><div class="controls" style="justify-content:flex-start"><button class="btn primary" id="doReset">Yes, reset</button><button class="btn" id="cancelReset">Cancel</button></div>`;
  cancelReset.onclick=()=>resetConfirm.classList.add('hidden');
  doReset.onclick=()=>performSettingsReset(kind);
 });
@@ -554,8 +640,8 @@ function performSettingsReset(kind){
 }
 
 const compactScreen=matchMedia('(max-width:700px)');
-function resetCompactDetails(){[scopePanel,studyAbout,studyOptions].forEach(panel=>panel.open=!compactScreen.matches)}
+function resetCompactDetails(){scopePanel.open=!compactScreen.matches}
 compactScreen.addEventListener('change',resetCompactDetails);resetCompactDetails();
-save();renderLessonOptions();updateScopeSummary();updateStudyOptionsSummary();renderStudy();resetFlash();
+save();renderLessonOptions();updateScopeSummary();renderStudy();resetFlash();
 </script>
 </body></html>
