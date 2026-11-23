@@ -1,0 +1,30 @@
+Word Quest - Proprietary License
+
+Copyright in original project material belongs to its respective copyright
+holders. All rights reserved.
+
+You may access and use the application as made available by its operator,
+including making temporary copies technically necessary for that use. Except
+as permitted by applicable law, an applicable platform agreement, or separate
+permission from the relevant rights holder, you may not copy, modify,
+distribute, sublicense, or sell project material.
+
+Third-party material is subject to its own terms, which take precedence over
+these terms for that material. In particular, the carryword vocabulary data is
+available under the MIT license in docs/licenses/carryword-MIT.txt.
+Open English WordNet-derived vocabulary is subject to CC BY 4.0 and the
+underlying Princeton WordNet terms in docs/licenses/wordnet-LICENSE.md and
+docs/licenses/Princeton-WordNet.txt. Credit belongs to The Open English
+WordNet Team and Princeton University WordNet. Selection, study definitions,
+clues/contrasts, examples and level assignments were adapted for this app;
+source-sense exceptions are noted in the records and corpus documentation.
+Nothing in this project license limits rights granted by those source
+licenses or imposes additional restrictions on licensed adaptations.
+In particular, the restrictions above do not limit recipients' rights under
+the applicable third-party licenses to use, copy, adapt, or share the
+third-party material. Those licenses apply independently of these project
+terms.
+
+This license does not grant rights to any third-party material on behalf
+of its rights holder, including material removed from the current tree
+that may remain in Git history or earlier distributions.
