@@ -5,14 +5,14 @@ The website embeds the generated corpus; rebuild it after changing source data.
 
 | Editorial study level | Words | Lessons |
 |---|---:|---:|
-| SSAT Elementary (current grades 3-4) | 111 | 10 |
-| SSAT Middle (current grades 5-7) | 208 | 18 |
-| SSAT Upper (current grades 8-11) | 159 | 15 |
-| Advanced academic | 130 | 13 |
-| Total | 608 | 56 |
+| SSAT Elementary (current grades 3-4) | 111 | 6 |
+| SSAT Middle (current grades 5-7) | 273 | 14 |
+| SSAT Upper (current grades 8-11) | 224 | 12 |
+| Total | 608 | 32 |
 
-The three SSAT levels combine carryword with WordNet-curated sets; advanced
-academic uses carryword. These are
+All three SSAT levels combine Carryword with WordNet-curated sets. The 130
+former advanced-academic words were individually reclassified: 65 to Middle
+and 65 to Upper. These are
 independent study recommendations, not official SSAT vocabulary lists,
 source-provided age ratings, a calibrated difficulty scale, or a complete
 exam-preparation curriculum. Grade bands follow the
@@ -34,17 +34,16 @@ The Exam filter selects overlapping editorial level bands:
 | Exam | Included levels | Words |
 |---|---|---:|
 | SSAT Elementary | Elementary | 111 |
-| SSAT Middle; ISEE Lower | Elementary, Middle | 319 |
-| SSAT Upper; ISEE Middle | Elementary, Middle, Upper | 478 |
-| PSAT 8/9 | Middle, Upper | 367 |
-| ISEE Upper; PSAT/NMSQT; SAT; ACT | Middle, Upper, Advanced academic | 497 |
+| SSAT Middle; ISEE Lower | Elementary, Middle | 384 |
+| SSAT Upper; ISEE Middle | Elementary, Middle, Upper | 608 |
+| PSAT 8/9; ISEE Upper; PSAT/NMSQT; SAT; ACT | Middle, Upper | 497 |
 
 SSAT grades refer to current grade and ISEE to the grade being applied to.
 These broad pools are recommendations, not individual word-level exam
 classifications or evidence of exam coverage. Exam, Level, Lesson and
 Mastery filters intersect. Progress is shared.
 
-Lessons initially contain 10-12 words, with light themes and an editorial
+Lessons contain 15-20 words, with light themes and an editorial
 sequence from foundations toward reasoning and mixed review. They are not
 alphabetical slices or official SSAT lessons. Related terms are deliberately
 compared in some lessons, but each includes varied meanings and tasks.
@@ -95,7 +94,8 @@ identify the intended sense, and usage questions ask for a sentence's
 meaning rather than inventing potentially valid "wrong" sentences.
 These conservative alternatives favor answer clarity over close-choice
 difficulty. More demanding distractors require separate editorial review.
-Sixty-three words (25 Upper and 38 advanced academic) also have original,
+Sixty-three words (25 existing Upper and 38 formerly academic, now assigned
+to Middle or Upper) also have original,
 reviewed context-inference questions. SAT/PSAT/ACT sessions favor meaning
 in context; when selected words have reviewed inference questions, standard,
 Challenge and God Mode use progressively more of them, targeting 15%, 30%
